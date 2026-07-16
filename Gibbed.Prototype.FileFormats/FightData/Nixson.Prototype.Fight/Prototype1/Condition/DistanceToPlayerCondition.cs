@@ -1,0 +1,28 @@
+﻿using System;
+using System.IO;
+using Gibbed.IO;
+
+namespace Nixson.Prototype.Fight.Prototype1.Condition
+{
+	[KnownCondition(10955676710323188873UL)]
+	public class DistanceToPlayerCondition : P1Condition
+	{
+		public PlayerType Player { get; set; }
+		public CompareOperator Compare { get; set; }
+		public float Distance { get; set; }
+		public override void Serialize(Stream output, Endian endianess)
+		{
+			base.Serialize(output, endianess);
+			BaseProperty.SerializePropertyEnum<PlayerType>(output, endianess, this.Player);
+			BaseProperty.SerializePropertyEnum<CompareOperator>(output, endianess, this.Compare);
+			output.WriteValueF32(this.Distance, endianess);
+		}
+		public override void Deserialize(Stream input, Endian endianess)
+		{
+			base.Deserialize(input, endianess);
+			this.Player = BaseProperty.DeserializePropertyEnum<PlayerType>(input, endianess);
+			this.Compare = BaseProperty.DeserializePropertyEnum<CompareOperator>(input, endianess);
+			this.Distance = input.ReadValueF32(endianess);
+		}
+	}
+}

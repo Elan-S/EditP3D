@@ -64,6 +64,11 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
 
         public override void Export(Stream output)
         {
+            if (TexturePreview.Export(this, output) == true)
+            {
+                return;
+            }
+
             output.Write(this.Data, 0, this.Data.Length);
         }
 
@@ -76,6 +81,11 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
         {
             this.Data = new byte[input.Length];
             input.Read(this.Data, 0, this.Data.Length);
+        }
+
+        public override object Preview()
+        {
+            return TexturePreview.Decode(this);
         }
     }
 }

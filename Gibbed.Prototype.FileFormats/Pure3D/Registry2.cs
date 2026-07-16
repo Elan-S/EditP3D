@@ -43,9 +43,9 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
         public override void Deserialize(Stream input)
         {
             this.Unknown1 = input.ReadValueU32();
-            this.Unknown2 = input.ReadString(input.ReadValueU32() + 1, true, Encoding.ASCII);
+            this.Unknown2 = input.ReadString((int)input.ReadValueU32() + 1, true, Encoding.ASCII);
             this.Unknown3 = input.ReadValueU32();
-            this.Unknown4 = input.ReadString(input.ReadValueU32() + 1, true, Encoding.ASCII);
+            this.Unknown4 = input.ReadString((int)input.ReadValueU32() + 1, true, Encoding.ASCII);
 
             // following data depends on Unknown2 value :|
         }

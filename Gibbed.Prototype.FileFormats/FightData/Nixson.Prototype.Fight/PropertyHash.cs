@@ -1,0 +1,21 @@
+﻿using System;
+
+namespace Nixson.Prototype.Fight
+{
+	public enum PropertyHash : ulong
+	{
+		InitialTracks = 10907595435911549452UL,
+		Functions = 5884039357143479095UL,
+		ExitTracks = 7377826839951285708UL,
+		EnterTracks = 16335132794923941146UL,
+		Conditions = 8743080268224679434UL,
+		Tracks = 14021602511724908772UL,
+		Lods = 30487493890819308UL,
+		ReverseConditions = 9440182720837839536UL,
+		OnCornerConditions = 16936078494672305378UL,
+		LeftAnim = 1313638328200977740UL,
+		RightAnim = 8687470983751805445UL,
+		BackAnim = 16436703581921599506UL,
+		Effect = 2076383322900159339UL
+	}
+}

@@ -55,9 +55,9 @@
       <Project>{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}</Project>
       <Name>Gibbed.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NDesk.Options\NDesk.Options.csproj">
-      <Project>{C98A6CD6-9422-4B35-8B7A-F520D75534D1}</Project>
-      <Name>NDesk.Options</Name>
+    <ProjectReference Include="..\NDesk.Options\NDesk.csproj">
+      <Project>{748DAC7D-5B70-58C4-F90B-7E4B2C28912D}</Project>
+      <Name>NDesk</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,6 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using Gibbed.IO;
-using Gibbed.Squish;
 
 namespace Gibbed.Prototype.FileFormats.Pure3D
 {
@@ -101,20 +100,7 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
                 return null;
             }
 
-            var memory = new MemoryStream();
-            memory.Write(data.Data, 0, data.Data.Length);
-            memory.Seek(0, SeekOrigin.Begin);
-
-            try
-            {
-                var dds = new DDSFile();
-                dds.Deserialize(memory);
-                return dds.Image();
-            }
-            catch (FormatException)
-            {
-                return null;
-            }
+            return TexturePreview.Decode(this, data);
         }
 
         public override bool Exportable
@@ -132,12 +118,13 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
 
         public override void Export(Stream output)
         {
-            BaseNode node = this.GetChildNode<TextureData>();
-            if (node == null)
+            var data = this.GetChildNode<TextureData>();
+            if (data == null)
             {
                 throw new InvalidOperationException();
             }
-            node.Export(output);
+
+            TexturePreview.ExportDds(this, data, output);
         }
 
         public override bool Importable

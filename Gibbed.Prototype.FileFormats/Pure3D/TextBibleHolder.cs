@@ -36,6 +36,16 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
         public List<uint> StringStarts { get; set; }
         public List<uint> StringStops { get; set; }
 
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(this.Language) == true)
+            {
+                return base.ToString();
+            }
+
+            return base.ToString() + " (" + this.Language + ")";
+        }
+
         public override void Serialize(Stream output)
         {
             throw new NotImplementedException();

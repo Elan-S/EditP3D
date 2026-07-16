@@ -53,6 +53,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gibbed.IO, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Gibbed.Squish\bin\Release\net40\Gibbed.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Gibbed.Squish">
+      <HintPath>..\Gibbed.Squish\bin\Release\net40\Gibbed.Squish.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -69,20 +76,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CementFile.cs" />
+    <Compile Include="Pure3D\CementFile.cs" />
     <Compile Include="Cement\Entry.cs" />
     <Compile Include="Cement\Metadata.cs" />
-    <Compile Include="Colour.cs" />
-    <Compile Include="FourCC.cs" />
+    <Compile Include="Pure3D\Colour.cs" />
+    <Compile Include="Pure3D\FourCC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pure3DFile.cs" />
+    <Compile Include="Pure3D\Pure3DGame.cs" />
+    <Compile Include="Pure3D\Pure3DFile.cs" />
+    <Compile Include="Pure3D\Animation.cs" />
+    <Compile Include="Pure3D\AnimationChannel.cs" />
+    <Compile Include="Pure3D\AnimationData.cs" />
+    <Compile Include="Pure3D\AnimationDataReference.cs" />
+    <Compile Include="Pure3D\AnimationGroup.cs" />
     <Compile Include="Pure3D\Billboard.cs" />
+    <Compile Include="Pure3D\BoneData\BoneInterpolation.cs" />
+    <Compile Include="Pure3D\BoneData\BoneTRAN.cs" />
+    <Compile Include="Pure3D\BoneData\BoneROT.cs" />
+    <Compile Include="Pure3D\BoneData\Quaternion3CompressedChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Quaternion6CompressedChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Vector1DOFChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Vector2DOFChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Vector3DOFChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Vector1DOFCompressedChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Vector2DOFCompressedChannel.cs" />
+    <Compile Include="Pure3D\BoneData\Vector3DOFCompressedChannel.cs" />
+    <Compile Include="Pure3D\BoneData\VisibilityChannel.cs" />
+    <Compile Include="Pure3D\BoneData\VertexMorphChannel.cs" />
+    <Compile Include="Pure3D\Bones.cs" />
     <Compile Include="Pure3D\CompositeDrawable.cs" />
     <Compile Include="Pure3D\CompositeDrawablePolySkinReference.cs" />
     <Compile Include="Pure3D\Expression.cs" />
     <Compile Include="Pure3D\ExpressionGroup.cs" />
     <Compile Include="Pure3D\Geometry.cs" />
+    <Compile Include="Pure3D\IndexBuffer.cs" />
+    <Compile Include="Pure3D\LegacyChunks.cs" />
+    <Compile Include="Pure3D\LegacyPrimitiveStreams.cs" />
+    <Compile Include="Pure3D\Locator.cs" />
     <Compile Include="Pure3D\NodeFactory.cs" />
+    <Compile Include="Pure3D\OpaqueNode.cs" />
     <Compile Include="Pure3D\ParticleSystem.cs" />
     <Compile Include="Pure3D\Registry2.cs" />
     <Compile Include="Pure3D\ShaderVariableType.cs" />
@@ -92,12 +124,14 @@
     <Compile Include="Pure3D\ShaderProgram.cs" />
     <Compile Include="Pure3D\ShaderTemplate.cs" />
     <Compile Include="Pure3D\Skeleton.cs" />
+    <Compile Include="Pure3D\SkeletonJoint.cs" />
     <Compile Include="Pure3D\TextBibleStorage.cs" />
     <Compile Include="Pure3D\TextureGlyph.cs" />
     <Compile Include="Pure3D\TextureSource.cs" />
     <Compile Include="Pure3D\KnownTypeAttribute.cs" />
     <Compile Include="Pure3D\BaseNode.cs" />
     <Compile Include="Pure3D\Texture.cs" />
+    <Compile Include="Pure3D\TexturePreview.cs" />
     <Compile Include="Pure3D\TexturePNG.cs" />
     <Compile Include="Pure3D\TextureFont.cs" />
     <Compile Include="Pure3D\TextureDDS.cs" />
@@ -106,7 +140,14 @@
     <Compile Include="Pure3D\NewShader.cs" />
     <Compile Include="Pure3D\ShaderCode.cs" />
     <Compile Include="Pure3D\ShaderGlobalVariable.cs" />
-    <Compile Include="Pure3D\U00010020_PrimitiveGroup.cs" />
+    <Compile Include="Pure3D\PrimitiveMatrix.cs" />
+    <Compile Include="Pure3D\PrimitiveGroup.cs" />
+    <Compile Include="Pure3D\Prototype2\P2Chunks.cs" />
+    <Compile Include="Pure3D\SpiderMan4\SM4Chunks.cs" />
+    <Compile Include="Pure3D\VertexBuffer.cs" />
+    <Compile Include="Pure3D\VertexDescription.cs" />
+    <Compile Include="Pure3D\VertexDescriptionList.cs" />
+    <Compile Include="Pure3D\VertexAnimation.cs" />
     <Compile Include="Pure3D\U00011016.cs" />
     <Compile Include="Pure3D\U00011017.cs" />
     <Compile Include="Pure3D\U00011018.cs" />
@@ -118,7 +159,6 @@
     <Compile Include="Pure3D\U00022004.cs" />
     <Compile Include="Pure3D\U00022005.cs" />
     <Compile Include="Pure3D\U00022006.cs" />
-    <Compile Include="Pure3D\Animation.cs" />
     <Compile Include="Pure3D\U00121006.cs" />
     <Compile Include="Pure3D\MetaObjectDefinition.cs" />
     <Compile Include="Pure3D\MetaObjectData.cs" />
@@ -127,12 +167,16 @@
     <Compile Include="Pure3D\CompositeDrawableExpressionMixerReference.cs" />
     <Compile Include="Pure3D\Unknown.cs" />
     <Compile Include="Pure3D\ExpressionMixer.cs" />
-    <Compile Include="StreamHelpers.cs" />
-    <Compile Include="StringHelpers.cs" />
-    <Compile Include="Vector2.cs" />
-    <Compile Include="Vector3.cs" />
-    <Compile Include="Vector4.cs" />
-    <Compile Include="VectorTypeConverter.cs" />
+    <Compile Include="Pure3D\Quaternion.cs" />
+    <Compile Include="Pure3D\RotationCompressed.cs" />
+    <Compile Include="Pure3D\StreamHelpers.cs" />
+    <Compile Include="Pure3D\StringHelpers.cs" />
+    <Compile Include="Pure3D\Vector2.cs" />
+    <Compile Include="Pure3D\Vector3Compressed.cs" />
+    <Compile Include="Pure3D\Vector3.cs" />
+    <Compile Include="Pure3D\Vector4.cs" />
+    <Compile Include="Pure3D\VectorTypeConverter.cs" />
+    <Compile Include="FightData\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -150,16 +194,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Gibbed.IO\Gibbed.IO.csproj">
-      <Project>{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}</Project>
-      <Name>Gibbed.IO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gibbed.Squish\Gibbed.Squish.csproj">
-      <Project>{242D0738-AA4C-4C9C-A218-891A8F55559C}</Project>
-      <Name>Gibbed.Squish</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

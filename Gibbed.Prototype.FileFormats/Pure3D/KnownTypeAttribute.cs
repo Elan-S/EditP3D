@@ -24,6 +24,7 @@ using System;
 
 namespace Gibbed.Prototype.FileFormats.Pure3D
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class KnownTypeAttribute : Attribute
     {
         public uint Id;

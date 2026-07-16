@@ -22,7 +22,6 @@
 
 using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
 using Gibbed.IO;
 
@@ -87,11 +86,7 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
                 return null;
             }
 
-            var memory = new MemoryStream();
-            memory.Write(data.Data, 0, data.Data.Length);
-            memory.Seek(0, SeekOrigin.Begin);
-
-            return Image.FromStream(memory);
+            return TexturePreview.Decode(this, data);
         }
 
         public override bool Exportable

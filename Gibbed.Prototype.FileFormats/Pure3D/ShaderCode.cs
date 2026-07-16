@@ -67,7 +67,7 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
 
             public void Deserialize(Stream input)
             {
-                this.Text = input.ReadString((uint)input.Length, true, Encoding.ASCII);
+                this.Text = input.ReadString((int)input.Length, true, Encoding.ASCII);
             }
         }
 

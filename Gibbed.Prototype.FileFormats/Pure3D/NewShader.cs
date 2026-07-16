@@ -35,12 +35,12 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
 
         public override string ToString()
         {
-            if (string.IsNullOrEmpty(this.Name) == true)
+            if (string.IsNullOrEmpty(this.ShaderTemplateName) == true)
             {
                 return base.ToString();
             }
 
-            return base.ToString() + " (" + this.Name + ")";
+            return base.ToString() + " (" + this.ShaderTemplateName + ")";
         }
 
         public override void Serialize(Stream output)

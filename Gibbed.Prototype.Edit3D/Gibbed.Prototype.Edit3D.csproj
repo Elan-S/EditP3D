@@ -53,6 +53,21 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gibbed.IO">
+      <HintPath>..\bin\Gibbed.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL">
+      <HintPath>..\bin\SharpGL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpGL.WinForms">
+      <HintPath>..\bin\SharpGL.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpGL.SceneGraph">
+      <HintPath>..\bin\SharpGL.SceneGraph.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -66,15 +81,29 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteArrayPropertyEditor.cs" />
+    <Compile Include="AnimationImportOptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Editor.Designer.cs">
       <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CutscenePreview.cs" />
+    <Compile Include="ExportOptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GltfAnimationImporter.cs" />
+    <Compile Include="ModelPreviewBuilder.cs" />
+    <Compile Include="ModelPreviewOpenGlControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +176,21 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folderadd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exportanim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cutscene.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveNode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usb-stick-green.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

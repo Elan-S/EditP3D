@@ -39,7 +39,7 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
             get
             {
                 object[] attributes = this.GetType().GetCustomAttributes(typeof(KnownTypeAttribute), false);
-                if (attributes.Length == 1)
+                if (attributes.Length > 0)
                 {
                     var attribute = (KnownTypeAttribute)attributes[0];
                     return attribute.Id;
@@ -57,6 +57,15 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
 
         public BaseNode ParentNode;
         public List<BaseNode> Children = new List<BaseNode>();
+
+        [Browsable(false)]
+        public uint StartPosition;
+
+        [Browsable(false)]
+        public uint HeaderSize;
+
+        [Browsable(false)]
+        public uint TotalSize;
 
         #region public int ChildCount
         [DisplayName("Child Count")]

@@ -1,0 +1,18 @@
+﻿using System;
+
+namespace Nixson.Prototype.Fight
+{
+	public enum BranchHash : ulong
+	{
+		Chunk = 7021078959221846271UL,
+		StateMachine = 4359263088009983578UL,
+		Bank = 27664593011459322UL,
+		Node = 31052086116492924UL,
+		Store = 8163269272626025203UL,
+		Reference = 9791952581861958631UL,
+		State = 8163269264019698807UL,
+		Transition = 16414221063871377845UL,
+		PlaybackSet = 4826239466064161373UL,
+		PlaybackNode = 13462353259087708995UL
+	}
+}

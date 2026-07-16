@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace Nixson.Prototype.Fight
+{
+	public enum GameObjectAttributeType : ulong
+	{
+		Undefined = 11501367102844296472UL,
+		Bool = 18631057157774572UL,
+		Int = 314129536211UL,
+		Float = 4980286969596303762UL,
+		String = 18302039109564851735UL,
+		UID = 365769659290UL,
+		Vector = 5064582562380300869UL,
+		GameObjectHandle = 18060360142119993637UL,
+		LuaTable = 14883956799589340158UL,
+		LuaFunction = 17552965369412705998UL,
+		LuaThread = 4283933981248107766UL
+	}
+}
