@@ -763,7 +763,9 @@ namespace Gibbed.Prototype.Edit3D
             bool overlay = this._Camera.WireMode == ModelPreviewWireMode.Overlay;
             if (overlay == true)
             {
-                gl.Disable(OpenGL.GL_DEPTH_TEST);
+                gl.Enable(OpenGL.GL_DEPTH_TEST);
+                gl.Enable(OpenGL.GL_POLYGON_OFFSET_LINE);
+                gl.PolygonOffset(-1.0f, -1.0f);
             }
 
             this._CurrentPartUsesTexture = false;
@@ -791,7 +793,7 @@ namespace Gibbed.Prototype.Edit3D
                 gl.PolygonMode(OpenGL.GL_FRONT_AND_BACK, OpenGL.GL_FILL);
                 if (overlay == true)
                 {
-                    gl.Enable(OpenGL.GL_DEPTH_TEST);
+                    gl.Disable(OpenGL.GL_POLYGON_OFFSET_LINE);
                 }
             }
         }
