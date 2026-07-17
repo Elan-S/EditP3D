@@ -1258,6 +1258,20 @@ namespace Gibbed.Prototype.Edit3D
 
         private Vec3 GetInfluenceColor(ModelPreviewVertex vertex)
         {
+            if (this._Camera != null &&
+                this._Camera.ShowInfluences == true &&
+                this._HoveredBone >= 0)
+            {
+                float hoveredWeight = GetBoneInfluenceWeight(vertex, this._HoveredBone);
+                if (hoveredWeight <= 0.0001f)
+                {
+                    return new Vec3(0.0f, 0.0f, 0.0f);
+                }
+
+                var hoveredColor = GetBoneDebugColor(this._HoveredBone);
+                return hoveredColor * Math.Min(1.0f, hoveredWeight);
+            }
+
             var color = new Vec3();
             float total = 0.0f;
             AddInfluenceColor(vertex.Bone0, vertex.Weight0, ref color, ref total);
@@ -1270,6 +1284,29 @@ namespace Gibbed.Prototype.Edit3D
             }
 
             return color * (1.0f / total);
+        }
+
+        private static float GetBoneInfluenceWeight(ModelPreviewVertex vertex, int boneIndex)
+        {
+            float weight = 0.0f;
+            if (vertex.Bone0 == boneIndex)
+            {
+                weight += Math.Max(0.0f, vertex.Weight0);
+            }
+            if (vertex.Bone1 == boneIndex)
+            {
+                weight += Math.Max(0.0f, vertex.Weight1);
+            }
+            if (vertex.Bone2 == boneIndex)
+            {
+                weight += Math.Max(0.0f, vertex.Weight2);
+            }
+            if (vertex.Bone3 == boneIndex)
+            {
+                weight += Math.Max(0.0f, vertex.Weight3);
+            }
+
+            return weight;
         }
 
         private static void AddInfluenceColor(int boneIndex, float weight, ref Vec3 color, ref float total)
