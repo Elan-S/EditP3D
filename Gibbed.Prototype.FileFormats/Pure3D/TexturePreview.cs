@@ -47,7 +47,9 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
                 using (var memory = new MemoryStream(data.Data, false))
                 using (var image = Image.FromStream(memory))
                 {
-                    return new Bitmap(image);
+                    var bitmap = new Bitmap(image);
+                    FlipY(bitmap);
+                    return bitmap;
                 }
             }
             catch
@@ -189,7 +191,7 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
                                 {
                                     int alphaIndex = py * 4 + px;
                                     bitmap.SetPixel(bx + px,
-                                                    by + py,
+                                                    height - 1 - (by + py),
                                                     Color.FromArgb(Math.Min(alpha[alphaIndex], colors[code].A), colors[code]));
                                 }
                             }
@@ -203,6 +205,16 @@ namespace Gibbed.Prototype.FileFormats.Pure3D
             {
                 return null;
             }
+        }
+
+        private static void FlipY(Bitmap bitmap)
+        {
+            if (bitmap == null)
+            {
+                return;
+            }
+
+            bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
         }
 
         private static Color[] DecodeDxtColors(ushort c0, ushort c1, bool allowTransparent)

@@ -3247,7 +3247,7 @@ namespace Gibbed.Prototype.Edit3D
                 if (uv != null)
                 {
                     vertex.U = uv.X;
-                    vertex.V = uv.Y;
+                    vertex.V = FlipTextureV(uv.Y);
                 }
 
                 var weight = ReadP2Weights(weightItems, i);
@@ -3423,6 +3423,11 @@ namespace Gibbed.Prototype.Edit3D
             return item.Data.Length == 1 ? item.Data[0] : -1;
         }
 
+        private static float FlipTextureV(float value)
+        {
+            return 1.0f - value;
+        }
+
         private static void AppendPrimitiveGroup(U00010020_PrimitiveGroup primitiveGroup, ModelPreviewScene scene, string ownerName)
         {
             AppendPrimitiveGroup(primitiveGroup, scene, ownerName, -1);
@@ -3478,7 +3483,7 @@ namespace Gibbed.Prototype.Edit3D
                 if (uv != null)
                 {
                     vertex.U = uv.U;
-                    vertex.V = uv.V;
+                    vertex.V = FlipTextureV(uv.V);
                 }
 
                 if (weight != null && group != null && group.Length >= 3)
@@ -3573,7 +3578,7 @@ namespace Gibbed.Prototype.Edit3D
                 if (i < uvs.Length)
                 {
                     vertex.U = uvs[i].X;
-                    vertex.V = uvs[i].Y;
+                    vertex.V = FlipTextureV(uvs[i].Y);
                 }
 
                 if (i < weights.Length && i < groups.Length)
@@ -5939,7 +5944,10 @@ namespace Gibbed.Prototype.Edit3D
                             if (bx + px < width && by + py < height)
                             {
                                 int alphaIndex = py * 4 + px;
-                                bitmap.SetPixel(bx + px, by + py, Color.FromArgb(Math.Min(alpha[alphaIndex], colors[code].A), colors[code]));
+                                bitmap.SetPixel(
+                                    bx + px,
+                                    height - 1 - (by + py),
+                                    Color.FromArgb(Math.Min(alpha[alphaIndex], colors[code].A), colors[code]));
                             }
                         }
                     }
